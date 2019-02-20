@@ -48,8 +48,10 @@ ffmpeg -i 13_concat_videos.mp4 -vf hflip -c:a copy 14_flip_concat_videos
 #Put videos side by side
 ffmpeg -i 13_concat_videos.mp4 -i 14_flip_concat_videos.mp4 -filter_complex "hstack,format=yuv420p" -c:v libx264 -crf 18 15_final_large.mp4
 
+#change pixels on cy's video
+ffmpeg -i cy.mp4 -vf "scale=360*sar:ih,setsar=1,crop=320:240" cy_final.mp4
 #concat ALL videos
-ffmpeg -safe 0 -f concat -segment_time_metadata 1 -i _concat_final.txt -vf select=concatdec_select -af aselect=concatdec_select,aresample=async=1 cy_yuhan.mp4
+ffmpeg -safe 0 -f concat -segment_time_metadata 1 -i _concat_final.txt -vf select=concatdec_select -af aselect=concatdec_select,aresample=async=1 all.mp4
 
 #resize the video
 #ffmpeg -i 15_side_by_side.mp4 -vf scale=320:240 16_final_small.mp4
