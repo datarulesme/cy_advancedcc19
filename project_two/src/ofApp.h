@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -20,7 +21,19 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-	
-        ofVideoGrabber mVidGrabber;
-
+    
+    ofVideoGrabber mVidGrabber;
+    ofVideoGrabber mVidGrabber_two;
+    ofVideoPlayer video;
+    ofVideoPlayer video_two;
+    ofSoundPlayer   mySound;
+    
+    //Timer
+    float startTime;
+    bool timerEnd;
+    
+    ofParameter <float> endTime;
+    
+    ofImage img;
+    ofImage screenShot;
 };
